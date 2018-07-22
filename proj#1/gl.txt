@@ -1,0 +1,96 @@
+
+private void UCSAlgorethim(Vertices vbegin2, Vertices end) {
+		minHeap heap = new minHeap(200);
+		vbegin2.costEdge = 0;
+		Vertices temp = vbegin2;
+		temp.isUsed = true;
+		int cost = 0;
+		int space = 0;
+		while (true) {
+			if (heap.size > space)
+				space = heap.size;
+			if (temp.getVid() == end.getVid()) {
+				System.out.println("done 2");
+				cost++;
+				break;
+			} else {
+				for (int i = 0; i < temp.getCost().size(); i++) {
+					cost++;
+					edge c = temp.getCost().get(i);
+					Vertices v = data[c.getVid1()];
+
+					if (temp.getVid() != v.getVid()) {
+						if (!v.isUsed) {
+							if (v.parent == null) {
+								v.parent = temp;
+
+								v.costEdge = c.cost + v.parent.costEdge;
+
+							} else {
+								double a;
+								a = c.cost + temp.costEdge;
+
+								if (v.costEdge > a) {
+									v.parent = temp;
+
+									v.costEdge = c.cost + v.parent.costEdge;
+								}
+
+							}
+
+							heap.insert(new Node(v));
+							System.out.print(
+									v.getName() + "--" + v.costEdge + "  parent = " + v.parent.getName() + " %% ");
+
+						}
+						cost++;
+					} else {
+
+						v = data[c.getVid2()];
+						if (!v.isUsed) {
+
+							if (v.parent == null) {
+
+								v.parent = temp;
+
+								v.costEdge = c.cost + v.parent.costEdge;
+
+							} else {
+
+								double a, b;
+								a = c.cost + temp.costEdge;
+
+								if (v.costEdge > a) {
+									v.parent = temp;
+									v.costEdge = c.cost + v.parent.costEdge;
+								}
+
+							}
+
+							heap.insert(new Node(v));
+							System.out.print(
+									v.getName() + "--" + v.costEdge + "  parent = " + v.parent.getName() + " %% ");
+						}
+						cost++;
+
+					}
+					cost++;
+
+				}
+
+				if (heap.size == 0)
+					break;
+				cost++;
+				System.out.println();
+
+				temp = heap.deleteMin().element;
+				temp.isUsed = true; 
+				System.out.println("temp = " + temp.getName());
+			}
+
+		}
+		costl.setText("Cost = " + cost);
+		costl.setVisible(true);
+		spacel.setText("Space = " + space);
+		spacel.setVisible(true);
+	}

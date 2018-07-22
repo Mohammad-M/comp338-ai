@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AI_Contruler">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#readFile" text="read data" />
+              <MenuItem mnemonicParsing="false" onAction="#save" text="save" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Run">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#BFS" text="Breadth First Search " />
+                  <MenuItem mnemonicParsing="false" onAction="#UCS" text="Uniform Cost Search" />
+                  <MenuItem mnemonicParsing="false" onAction="#DFS" text="Depth First Search" />
+                  <MenuItem mnemonicParsing="false" onAction="#DLS" text="Depth Limited Search" />
+                  <MenuItem mnemonicParsing="false" onAction="#IDDFS" text="Iterative Deeeping Depth First Search" />
+                  <MenuItem mnemonicParsing="false" onAction="#Astar" text="A*" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="help !">
+              <items>
+              <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <Pane fx:id="root" prefHeight="742.0" prefWidth="597.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="680.0" fitWidth="513.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../files/img/map.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="startVertex" layoutY="14.0" style="-fx-border-color: red;" text="Pleas select start vertex ..." textFill="#dd1313" visible="false">
+               <font>
+                  <Font name="Bell MT Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="costl" layoutX="501.0" layoutY="93.0" text="cost" textFill="#ee0c0c" visible="false">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="spacel" layoutX="501.0" layoutY="43.0" text="space" textFill="#eb0e0e" visible="false">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </center>
+   <left>
+      <VBox alignment="CENTER" prefHeight="680.0" prefWidth="53.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="166.0" text="clear" />
+            <Button fx:id="ver" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Vertex" />
+            <Button fx:id="edge" mnemonicParsing="false" onAction="#addEdgeFun" prefHeight="25.0" prefWidth="280.0" text="edge" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
